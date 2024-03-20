@@ -1,53 +1,28 @@
-const Header = (props) => {
-  return (
-    <h1>{props.course}</h1>
-  );
-};
+const Hello = (props) => {
 
-const Content = (props) => {
+  const { name, age } = props
+  const bornYear = () => new Date().getFullYear() - age
+
   return (
     <div>
-      {props.parts.map((part, index) => (
-        <p key={index}>{part.name}</p>
-      ))}
+      <p>Hello {name}, you are {age} years old</p>
+      <p>So you were probably born in {bornYear()}</p>
     </div>
-  );
-};
-
-const Total = (props) => {
-  const totalExercises = props.parts.reduce((total, part) => total + part.exercises, 0);
-
-  return (
-    <p>Number of exercises: {totalExercises}</p>
-  );
-};
-
-const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
+  )
 }
+  
+  const App = () => {
+    const name = 'Peter'
+    const age = 10
+  
+    return (
+      <div>
+        <h1>Greetings</h1>
+        <Hello name="Maya" age={26 + 10} />
+        <Hello name={name} age={age} />
+      </div>
+    )
+  }
 
-  return (
-    <div>
-      <Header course={course.name} />
-      <Content parts={course.parts} />
-      <Total parts={course.parts} />
-    </div>
-  );
-};
-
-export default App;
+  export default App;
+  
